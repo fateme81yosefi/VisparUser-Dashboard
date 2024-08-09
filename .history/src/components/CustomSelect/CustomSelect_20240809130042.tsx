@@ -25,7 +25,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     return (
         <div>
             <label className="mb-0.5 block text-black dark:text-white">
-                {selectedValue === undefined || selectedValue === '' ? label : label}
+                {selectedValue === undefined || selectedValue === '' ? label : ''}
             </label>
 
             <div className="relative z-10 bg-white dark:bg-form-input">

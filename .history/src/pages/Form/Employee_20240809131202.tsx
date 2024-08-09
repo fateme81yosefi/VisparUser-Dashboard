@@ -152,7 +152,7 @@ const Employee: React.FC = () => {
             <Breadcrumb />
             {eventModal && (
                 <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  outline-none focus:outline-none  text-sm upperLayer">
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none  text-sm">
                         <div className="relative my-6 mx-auto w-1/3">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -209,31 +209,31 @@ const Employee: React.FC = () => {
                                     </div>
                                     <div className="w-full mb-4.5">
 
-                                        <label className="mb-0.5 block text-black dark:text-white">
-                                            توضیحات ادمین
-                                        </label>
-                                        <textarea value={adminDesc} onChange={setadminDesc} placeholder="توضیحات ادمین  را وارد کنید" rows="2"
-                                            className={`w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary textareaCustomize`}
-                                        />
-
+                                        <CustomInput label="توضیحات ادمین"
+                                            value={adminDesc}
+                                            onChange={setadminDesc}
+                                            placeholder="توضیحات ادمین  را وارد کنید" />
                                     </div>
                                     <div className="w-full">
-                                        <label className="mb-0.5 block text-black dark:text-white">
-                                            توضیحات کارمندان
-                                        </label>
-                                        <textarea value={employeeDesc} onChange={setemployeeDesc} placeholder="توضیحات کارمندان  را وارد کنید" rows="2"
-                                            className={`w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary textareaCustomize`}
+                                    <label className="mb-0.5 block text-black dark:text-white">
+                                    "توضیحات کارمندان"
+                                    </label>
+                                        <textarea  rows="2"                
+                                         className={`w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary textareaCustomize`}
                                         />
 
-
+                                        <CustomInput label="توضیحات کارمندان"
+                                            value={employeeDesc}
+                                            onChange={setemployeeDesc}
+                                            placeholder="توضیحات کارمندان  را وارد کنید" />
                                     </div>
                                     <div className="relative px-6 py-3 flex-auto text-right">
 
                                     </div>
-                                    <div className="flex items-center justify-end py-4 border-t border-solid border-zinc-200 rounded-b">
+                                    <div className="flex items-center justify-end p-6 border-t border-solid border-zinc-200 rounded-b">
 
                                         <CustomButton
-                                            onClick={() => { setEventModal(false); seteventDate(""); seteventDate_persian(""); setadminDesc(""); setemployeeDesc(""); setindicatorId(""); setStatus("") }}
+                                            onClick={() => { setEventModal(false); seteventDate("");seteventDate_persian(""); setadminDesc(""); setemployeeDesc(""); setindicatorId(""); setStatus("") }}
                                             className="text-red-500 font-bold background-transparent"
                                         >
                                             بستن

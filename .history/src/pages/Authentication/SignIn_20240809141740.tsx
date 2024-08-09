@@ -100,17 +100,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {errorOTPCodeVerify && showErrorTimer &&(
-          <div
-          className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
-          role="alert"
-        >
-          <div className='inline-flex'>
-            <img src={ErrorIcon} />
-            <span className="font-medium ml-10">{errorOTPCodeVerify}</span>
-          </div>
-        </div>
-      )}
+      {errorOTPCodeVerify && showErrorTimer }
 
       <div className="rounded-sm	h-dvh	  bg-white   dark:bg-boxdark">
         <div className="flex flex-wrap items-center flex-col">

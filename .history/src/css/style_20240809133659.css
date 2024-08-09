@@ -507,14 +507,8 @@ input[type='number'] {
 
 .customizeATag{
   color: #19bfd3;
-  font-size: 14px;
-  font-weight:600;
+  font-size: small;<svg style="width: 18px; height: 18px; fill: var(--color-icon-secondary);"><use xlink:href="#chevronLeft"></use></svg>
 }
-
-.border-custome:focus{
-  border: 1px solid #1da6c0 !important;
-}
-
 div.justify-center.items-center.flex.overflow-x-hidden.overflow-y-auto.fixed.inset-0.z-50.outline-none.focus\:outline-none.text-sm
   > div
   > div

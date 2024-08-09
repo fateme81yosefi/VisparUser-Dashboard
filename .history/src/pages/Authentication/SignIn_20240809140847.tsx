@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
 
   const [password, setPassword] = useState('');
   const [otpMode, setOtpMode] = useState(false);
-
+  
   const [showErrorTimer, setShowErrorTimer] = useState(false);
 
 
@@ -39,21 +39,21 @@ const SignIn: React.FC = () => {
 
   useEffect(() => {
     if (error || errorOTP || errorOTPCodeVerify || loggedIn || loggedInOTP || otpCodeVerify) {
-      setShowErrorTimer(true);
-      const timer = setTimeout(() => {
-        setShowErrorTimer(false);
-      }, 4000);
+        setShowErrorTimer(true);
+        const timer = setTimeout(() => {
+            setShowErrorTimer(false);
+        }, 4000);
 
-      return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
     }
-  }, [error, errorOTP, errorOTPCodeVerify, loggedIn, loggedInOTP, otpCodeVerify]);
+}, [error ,errorOTP , errorOTPCodeVerify , loggedIn , loggedInOTP , otpCodeVerify]);
 
 
 
 
   return (
     <>
-      {error && showErrorTimer && (
+      {error && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
@@ -66,7 +66,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {errorOTP && showErrorTimer && (
+      {errorOTP && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
@@ -76,7 +76,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {loggedIn && showErrorTimer && (
+      {loggedIn && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-green-400 dark:bg-gray-800 dark:text-green-400"
           role="alert"
@@ -88,7 +88,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {loggedInOTP && showErrorTimer && (
+      {loggedInOTP && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-green-400 dark:bg-gray-800 dark:text-green-400"
           role="alert"
@@ -96,18 +96,6 @@ const SignIn: React.FC = () => {
           <div className='inline-flex'>
             <img src={ErrorIcon} />
             <span className="font-medium ml-10">کد برای شماره همراه ارسال شد! </span>
-          </div>
-        </div>
-      )}
-
-      {errorOTPCodeVerify && showErrorTimer &&(
-          <div
-          className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
-          role="alert"
-        >
-          <div className='inline-flex'>
-            <img src={ErrorIcon} />
-            <span className="font-medium ml-10">{errorOTPCodeVerify}</span>
           </div>
         </div>
       )}

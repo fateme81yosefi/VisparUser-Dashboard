@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorIcon from '/src/components/Icon/error.svg'
-import LeftIcon from '/src/components/Icon/left.svg'
-
 import LogoDark from '../../../public/73b98efb3ac343b48544a710e68c6dfe-600x315w.png';
 import Logo from '../../../public/001_2XAE9J2L6B1UIZ1main.png';
 
@@ -20,8 +18,6 @@ const SignIn: React.FC = () => {
   const [password, setPassword] = useState('');
   const [otpMode, setOtpMode] = useState(false);
 
-  const [showErrorTimer, setShowErrorTimer] = useState(false);
-
 
   const handleLogin = async () => {
     await login(phoneNumber, password);
@@ -37,23 +33,9 @@ const SignIn: React.FC = () => {
 
 
 
-  useEffect(() => {
-    if (error || errorOTP || errorOTPCodeVerify || loggedIn || loggedInOTP || otpCodeVerify) {
-      setShowErrorTimer(true);
-      const timer = setTimeout(() => {
-        setShowErrorTimer(false);
-      }, 4000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [error, errorOTP, errorOTPCodeVerify, loggedIn, loggedInOTP, otpCodeVerify]);
-
-
-
-
   return (
     <>
-      {error && showErrorTimer && (
+      {error && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
@@ -66,7 +48,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {errorOTP && showErrorTimer && (
+      {errorOTP && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
@@ -76,7 +58,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {loggedIn && showErrorTimer && (
+      {loggedIn && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-green-400 dark:bg-gray-800 dark:text-green-400"
           role="alert"
@@ -88,7 +70,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {loggedInOTP && showErrorTimer && (
+      {loggedInOTP && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-green-400 dark:bg-gray-800 dark:text-green-400"
           role="alert"
@@ -96,18 +78,6 @@ const SignIn: React.FC = () => {
           <div className='inline-flex'>
             <img src={ErrorIcon} />
             <span className="font-medium ml-10">کد برای شماره همراه ارسال شد! </span>
-          </div>
-        </div>
-      )}
-
-      {errorOTPCodeVerify && showErrorTimer &&(
-          <div
-          className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
-          role="alert"
-        >
-          <div className='inline-flex'>
-            <img src={ErrorIcon} />
-            <span className="font-medium ml-10">{errorOTPCodeVerify}</span>
           </div>
         </div>
       )}
@@ -145,7 +115,7 @@ const SignIn: React.FC = () => {
                             const convertedValue = usePersianNumToEn(e.target.value);
                             setPhoneNumber(convertedValue);
                           }}
-                          className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-custome focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-custome customizeDirectionPlaceholder border-custome"
+                          className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary customizeDirectionPlaceholder"
                         />
 
                         <span className="absolute right-4 top-4">
@@ -182,7 +152,7 @@ const SignIn: React.FC = () => {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           placeholder="بیش از 8 کاراکتر "
-                          className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-custome focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-custome customizeDirectionPlaceholder border-custome"
+                          className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary customizeDirectionPlaceholder"
                         />
 
                         <span className="absolute right-4 top-4">
@@ -209,8 +179,8 @@ const SignIn: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="mb-6 flex flex-row align-center">
-                      <a onClick={() => setOtpMode(false)} className='customizeATag  ml-2'>  فراموشی رمز عبور</a><img onClick={() => setOtpMode(false)} src={LeftIcon} />
+                    <div className="mb-6">
+                      <a onClick={() => setOtpMode(false)}>فراموشی رمز عبور</a>
                     </div>
 
                     <div className="mb-5">
@@ -239,7 +209,7 @@ const SignIn: React.FC = () => {
                               setPhoneNumber(convertedValue);
                             }}
 
-                            className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-custome focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-custome customizeDirectionPlaceholder border-custome"
+                            className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary customizeDirectionPlaceholder"
                           />
 
                           <span className="absolute right-4 top-4">
@@ -282,7 +252,7 @@ const SignIn: React.FC = () => {
                               setCode(convertedValue);
                             }}
 
-                            className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none border-custome focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary customizeDirectionPlaceholder border-custome"
+                            className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary customizeDirectionPlaceholder"
                           />
 
                           <span className="absolute right-4 top-4">
@@ -311,8 +281,8 @@ const SignIn: React.FC = () => {
                     }
 
 
-                    <div className="mb-6 flex flex-row align-center">
-                      <a onClick={() => setOtpMode(true)} className='customizeATag ml-2'>ورود با رمز عبور</a><img onClick={() => setOtpMode(false)} src={LeftIcon} />
+                    <div className="mb-6">
+                      <a onClick={() => setOtpMode(true)}>ورود با رمز عبور</a>
                     </div>
 
                     <div className="mb-5">

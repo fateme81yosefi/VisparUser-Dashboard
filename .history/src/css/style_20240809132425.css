@@ -498,23 +498,10 @@ input[type='number'] {
 .upperLayer {
   z-index: 10000;
 }
-.customizeDirectionPlaceholder::-webkit-input-placeholder {
-  text-align: right;
+.customizeDirectionPlaceholder::placeholder{
+  direction: rtl !important;
 }
-.customizeDirectionPlaceholder{
-  direction: ltr;
-}
-
-.customizeATag{
-  color: #19bfd3;
-  font-size: 14px;
-  font-weight:600;
-}
-
-.border-custome:focus{
-  border: 1px solid #1da6c0 !important;
-}
-
+.customizeDirectionPlaceholder::placeholder
 div.justify-center.items-center.flex.overflow-x-hidden.overflow-y-auto.fixed.inset-0.z-50.outline-none.focus\:outline-none.text-sm
   > div
   > div

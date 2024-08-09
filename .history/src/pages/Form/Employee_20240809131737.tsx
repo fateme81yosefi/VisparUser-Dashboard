@@ -152,7 +152,7 @@ const Employee: React.FC = () => {
             <Breadcrumb />
             {eventModal && (
                 <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  outline-none focus:outline-none  text-sm upperLayer">
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  outline-none focus:outline-none  text-sm">
                         <div className="relative my-6 mx-auto w-1/3">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">

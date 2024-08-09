@@ -107,7 +107,7 @@ const SignIn: React.FC = () => {
         >
           <div className='inline-flex'>
             <img src={ErrorIcon} />
-            <span className="font-medium ml-10">{errorOTPCodeVerify}</span>
+            <span className="font-medium ml-10">{}</span>
           </div>
         </div>
       )}

@@ -25,7 +25,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     return (
         <div>
             <label className="mb-0.5 block text-black dark:text-white">
-                {selectedValue === undefined || selectedValue === '' ? label : label}
+                {selectedValue === undefined || selectedValue === '' ? label : ''}
             </label>
 
             <div className="relative z-10 bg-white dark:bg-form-input">
@@ -36,7 +36,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                         setSelectedValue(newValue);
                         onChange(newValue);
                     }}
-                    className={`relative z-10 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input ${isOptionSelected ? 'text-black dark:text-white' : ''}`}>
+                    className={relative z-10 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input ${isOptionSelected ? 'text-black dark:text-white' : ''}}
+                >
                     <option value="" disabled hidden>{label}</option>
                     {options.map((option) => (
                         <option key={option.value} value={option.value} className="text-body dark:text-bodydark">

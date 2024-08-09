@@ -102,12 +102,12 @@ const SignIn: React.FC = () => {
 
       {errorOTPCodeVerify && showErrorTimer &&(
           <div
-          className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
+          className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-green-400 dark:bg-gray-800 dark:text-green-400"
           role="alert"
         >
           <div className='inline-flex'>
             <img src={ErrorIcon} />
-            <span className="font-medium ml-10">{errorOTPCodeVerify}</span>
+            <span className="font-medium ml-10">کد برای شماره همراه ارسال شد! </span>
           </div>
         </div>
       )}

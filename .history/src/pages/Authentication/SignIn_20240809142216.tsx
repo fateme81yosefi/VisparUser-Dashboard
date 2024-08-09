@@ -100,7 +100,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {errorOTPCodeVerify && showErrorTimer &&(
+      {loggedInOTP && showErrorTimer &&(
           <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
