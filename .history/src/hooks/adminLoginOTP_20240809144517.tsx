@@ -68,9 +68,7 @@ function useLoginOTP() {
 
       if (response.ok) {
         localStorage.setItem('tokenUser', data.token);
-
         setOtpCodeVerify(true);
-        window.location.href = '/'; 
         setErrorOTPCodeVerify('');
 
       } else {

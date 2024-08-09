@@ -106,7 +106,7 @@ const SignIn: React.FC = () => {
       )}
 
 
-      {!otpCodeVerify && errorOTPCodeVerify && showErrorTimer && (
+      {errorOTPCodeVerify && showErrorTimer && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
@@ -125,7 +125,7 @@ const SignIn: React.FC = () => {
         >
           <div className='inline-flex'>
             <img src={ErrorIcon} />
-            <span className="font-medium ml-10"> با موفقیت وارد شدید!</span>
+            <span className="font-medium ml-10"> "با موفقیت وارد شدید!</span>
           </div>
         </div>
       )}

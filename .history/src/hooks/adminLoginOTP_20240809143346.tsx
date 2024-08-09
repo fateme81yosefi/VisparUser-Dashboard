@@ -7,6 +7,7 @@ interface LoginResponse {
 
 function useLoginOTP() {
   const [errorcodeSend, setErrorcodeSend] = useState('');
+  const [loggedInOTP, setLoggedIn] = useState(false);
   const [codeSend, setcodeSend] = useState(false);
 
   const [otpCodeVerify, setOtpCodeVerify] = useState(false);
@@ -14,7 +15,7 @@ function useLoginOTP() {
 
 
 
-  const sendCode = async (phone_number: string) => {
+  const loginOTP = async (phone_number: string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-login', {
@@ -48,11 +49,11 @@ function useLoginOTP() {
         }
       }
     } catch (error) {
-      setErrorcodeSend('خطا در ارتباط با سرور');
+      setError('خطا در ارتباط با سرور');
     }
   };
 
-  const verifyCode = async (code: string , phone_number:string) => {
+  const loginOTPCode = async (code: string , phone_number:string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-verify', {
@@ -93,7 +94,7 @@ function useLoginOTP() {
     }
   };
 
-  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, sendCode, verifyCode };
+  return { errorOTP, errorOTPCodeVerify, loggedInOTP, otpCodeVerify, loginOTP, loginOTPCode };
 }
 
 export default useLoginOTP;

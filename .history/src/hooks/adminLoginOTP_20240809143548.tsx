@@ -52,7 +52,7 @@ function useLoginOTP() {
     }
   };
 
-  const verifyCode = async (code: string , phone_number:string) => {
+  const loginOTPCode = async (code: string , phone_number:string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-verify', {
@@ -93,7 +93,7 @@ function useLoginOTP() {
     }
   };
 
-  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, sendCode, verifyCode };
+  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, loginOTP, loginOTPCode };
 }
 
 export default useLoginOTP;

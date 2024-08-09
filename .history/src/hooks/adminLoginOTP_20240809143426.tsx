@@ -7,14 +7,15 @@ interface LoginResponse {
 
 function useLoginOTP() {
   const [errorcodeSend, setErrorcodeSend] = useState('');
-  const [codeSend, setcodeSend] = useState(false);
+    const [codeSend, setcodeSend] = useState(false);
 
+  const [loggedInOTP, setLoggedIn] = useState(false);
   const [otpCodeVerify, setOtpCodeVerify] = useState(false);
   const [errorOTPCodeVerify, setErrorOTPCodeVerify] = useState('');
 
 
 
-  const sendCode = async (phone_number: string) => {
+  const loginOTP = async (phone_number: string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-login', {
@@ -52,7 +53,7 @@ function useLoginOTP() {
     }
   };
 
-  const verifyCode = async (code: string , phone_number:string) => {
+  const loginOTPCode = async (code: string , phone_number:string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-verify', {
@@ -93,7 +94,7 @@ function useLoginOTP() {
     }
   };
 
-  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, sendCode, verifyCode };
+  return { errorcodeSend,  errorOTPCodeVerify, loggedInOTP, otpCodeVerify, loginOTP, loginOTPCode };
 }
 
 export default useLoginOTP;

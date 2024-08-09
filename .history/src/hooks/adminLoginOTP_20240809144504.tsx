@@ -70,7 +70,6 @@ function useLoginOTP() {
         localStorage.setItem('tokenUser', data.token);
 
         setOtpCodeVerify(true);
-        window.location.href = '/'; 
         setErrorOTPCodeVerify('');
 
       } else {

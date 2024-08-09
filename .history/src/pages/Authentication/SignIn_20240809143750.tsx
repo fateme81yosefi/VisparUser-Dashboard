@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
 
 
   useEffect(() => {
-    if (error || errorOTPCodeVerify || errorcodeSend || codeSend || otpCodeVerify || loggedIn) {
+    if (error || errorOTP || errorOTPCodeVerify || loggedIn || loggedInOTP || otpCodeVerify) {
       setShowErrorTimer(true);
       const timer = setTimeout(() => {
         setShowErrorTimer(false);
@@ -46,7 +46,7 @@ const SignIn: React.FC = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [error, errorOTPCodeVerify, errorcodeSend, codeSend, otpCodeVerify, loggedIn]);
+  }, [error, errorOTP, errorOTPCodeVerify, loggedIn, loggedInOTP, otpCodeVerify]);
 
 
 
@@ -95,6 +95,8 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
+
+
       {errorcodeSend && showErrorTimer && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
@@ -105,8 +107,7 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-
-      {!otpCodeVerify && errorOTPCodeVerify && showErrorTimer && (
+      {errorOTPCodeVerify && showErrorTimer && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-400 dark:bg-gray-800 dark:text-red-400"
           role="alert"
@@ -118,14 +119,14 @@ const SignIn: React.FC = () => {
         </div>
       )}
 
-      {otpCodeVerify && showErrorTimer && (
+      {loggedInOTP && showErrorTimer && (
         <div
           className="flex fixed justify-between items-center p-4 mb-4 text-sm text-white rounded-lg bg-green-400 dark:bg-gray-800 dark:text-green-400"
           role="alert"
         >
           <div className='inline-flex'>
             <img src={ErrorIcon} />
-            <span className="font-medium ml-10"> با موفقیت وارد شدید!</span>
+            <span className="font-medium ml-10">کد برای شماره همراه ارسال شد! </span>
           </div>
         </div>
       )}
@@ -243,7 +244,7 @@ const SignIn: React.FC = () => {
                   :
                   <form>
                     {
-                      !codeSend && <div className="mb-4">
+                      !loggedInOTP && <div className="mb-4">
                         <label className="mb-2.5 block font-medium text-black dark:text-white">
                           شماره همراه
                         </label>
@@ -286,7 +287,7 @@ const SignIn: React.FC = () => {
                     }
 
                     {
-                      codeSend && <div className="mb-4">
+                      loggedInOTP && <div className="mb-4">
                         <label className="mb-2.5 block font-medium text-black dark:text-white">
                           کد تایید
                         </label>
@@ -335,7 +336,7 @@ const SignIn: React.FC = () => {
 
                     <div className="mb-5">
                       {
-                        !codeSend &&
+                        !loggedInOTP &&
                         <input
                           type="button"
                           onClick={handleLoginOTP}
@@ -343,7 +344,7 @@ const SignIn: React.FC = () => {
                           className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90 btnCustmColor"
                         />}
                       {
-                        codeSend &&
+                        loggedInOTP &&
                         <input
                           type="button"
                           onClick={handleVerifyCode}

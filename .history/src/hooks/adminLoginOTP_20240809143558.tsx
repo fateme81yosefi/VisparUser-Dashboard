@@ -93,7 +93,7 @@ function useLoginOTP() {
     }
   };
 
-  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, sendCode, verifyCode };
+  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, sendCode, loginOTPCode };
 }
 
 export default useLoginOTP;

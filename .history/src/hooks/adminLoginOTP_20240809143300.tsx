@@ -6,15 +6,16 @@ interface LoginResponse {
 }
 
 function useLoginOTP() {
-  const [errorcodeSend, setErrorcodeSend] = useState('');
-  const [codeSend, setcodeSend] = useState(false);
+  const [errorOTP, setError] = useState('');
+  const [loggedInOTP, setLoggedIn] = useState(false);
+  const [codeSen, setLoggedIn] = useState(false);
 
   const [otpCodeVerify, setOtpCodeVerify] = useState(false);
   const [errorOTPCodeVerify, setErrorOTPCodeVerify] = useState('');
 
 
 
-  const sendCode = async (phone_number: string) => {
+  const loginOTP = async (phone_number: string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-login', {
@@ -29,17 +30,17 @@ function useLoginOTP() {
       const data: LoginResponse = await response.json();
 
       if (response.ok) {
-        setcodeSend(true);
-        setErrorcodeSend('');
+        setLoggedIn(true);
+        setError('');
       } else {
         switch (response.status) {
           case 425:
-            setErrorcodeSend("برای درخواست مجدد کد 3 دقیقه صبر کنید");
+            setError("برای درخواست مجدد کد 3 دقیقه صبر کنید");
 
             break;
 
           case 422:
-            setErrorcodeSend("خطایی رخ داده لطفا مجددا تلاش کنید");
+            setError("خطایی رخ داده لطفا مجددا تلاش کنید");
 
             break;
 
@@ -48,11 +49,11 @@ function useLoginOTP() {
         }
       }
     } catch (error) {
-      setErrorcodeSend('خطا در ارتباط با سرور');
+      setError('خطا در ارتباط با سرور');
     }
   };
 
-  const verifyCode = async (code: string , phone_number:string) => {
+  const loginOTPCode = async (code: string , phone_number:string) => {
 
     try {
       const response = await fetch('https://mqtt-broker.ir/api/employee/otp-verify', {
@@ -93,7 +94,7 @@ function useLoginOTP() {
     }
   };
 
-  return { errorcodeSend, codeSend, errorOTPCodeVerify, otpCodeVerify, sendCode, verifyCode };
+  return { errorOTP, errorOTPCodeVerify, loggedInOTP, otpCodeVerify, loginOTP, loginOTPCode };
 }
 
 export default useLoginOTP;
